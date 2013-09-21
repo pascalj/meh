@@ -1,0 +1,37 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    build-essential (1.4.0)
+    chef_handler (1.1.4)
+    dmg (1.1.0)
+    git (2.5.2)
+      build-essential (>= 0.0.0)
+      dmg (>= 0.0.0)
+      runit (>= 1.0)
+      windows (>= 0.0.0)
+      yum (>= 0.0.0)
+    mysql (3.0.4)
+      build-essential (> 1.1.0)
+      openssl (>= 0.0.0)
+    openssl (1.1.0)
+    ruby_build (0.8.0)
+    runit (1.1.6)
+      build-essential (>= 0.0.0)
+      yum (>= 0.0.0)
+    windows (1.10.0)
+      chef_handler (>= 0.0.0)
+    yum (2.3.0)
+
+GIT
+  remote: git://github.com/fnichol/chef-rbenv.git
+  ref: master
+  sha: 9afb4e5da2e6212504a12de3bbbd410cd96100f6
+  specs:
+    rbenv (0.7.3)
+
+DEPENDENCIES
+  git (>= 0)
+  mysql (>= 0)
+  rbenv (>= 0)
+  ruby_build (>= 0)
+
