@@ -1,4 +1,4 @@
-class ProgramController < ApplicationController
+class ProgramsController < ApplicationController
   def index
     @programs = Program.all
   end
@@ -34,6 +34,6 @@ class ProgramController < ApplicationController
   private
 
   def program_params
-    params.require(:program).permit(:name, :length, :stream_id)
+    params.require(:program).permit(:name, :length, :stream, :stream_id)
   end
 end

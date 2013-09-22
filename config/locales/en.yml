@@ -21,3 +21,17 @@
 
 en:
   hello: "Hello world"
+  streams:
+    new:
+      title: New stream
+      description: |
+        To record podcasts, you have to create streams first. Just enter a name, for example
+        "My Favorite Radio Station" and the URL to the direct audio stream.
+  programs:
+    new:
+      title: New podcast
+      description: |
+        Specify the time and the day of the week when the podcast should be recorded.
+    index:
+      title: Podcasts
+      none: You haven't created any podcasts.

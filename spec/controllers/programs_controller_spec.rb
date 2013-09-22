@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ProgramController do
+describe ProgramsController do
 
   describe "GET #index" do
 

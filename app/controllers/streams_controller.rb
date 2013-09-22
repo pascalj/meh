@@ -1,4 +1,4 @@
-class StreamController < ApplicationController
+class StreamsController < ApplicationController
   def index
     @streams = Stream.all
   end

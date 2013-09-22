@@ -6,9 +6,24 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="scope-<%= controller.controller_name %>">
+  <header>
+    <div class="row center">
+      <div class="large-12 columns">
+        <h1><%= link_to('Meh', root_path) %></h1>
+      </div>
+    </div>
+  </header>
 
-<%= yield %>
+  <%= yield %>
+
+  <footer>
+    <div class="row center">
+      <div class="large-12 columns">
+        <a href="https://github.com/pascalj/meh">meh</meh></a> by <a href="http://pascalj.com">Pascal Jungblut</a> — BSD licence
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

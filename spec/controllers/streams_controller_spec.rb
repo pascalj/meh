@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe StreamController do
+describe StreamsController do
 
   describe "GET #index" do
 

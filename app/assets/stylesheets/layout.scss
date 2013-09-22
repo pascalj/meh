@@ -1,0 +1,53 @@
+.center {
+  max-width: 1000px;
+  margin: 0 auto;
+
+}
+
+header {
+  background-color: #4AFFAB;
+  &, & h1, & h1 a, , & h1 a:hover {
+    color: #fff;
+    margin-bottom: 0.2em;
+    text-decoration: none;
+  }
+
+  h1 a {
+    background: transparent url(record_sign.png) no-repeat left top;
+    padding-left: 70px;
+  }
+}
+
+.button {
+  box-shadow: none;
+  border: none;
+  border-radius: 2px;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 20px; /* bottom = footer height */
+    position: static;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+footer {
+  font-size: 13px;
+  &, & a {
+    color: #888;
+  }
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 20px;
+  width: 100%;
+  div div {
+    text-align: center;
+  }
+}

@@ -1,12 +1,12 @@
 Meh::Application.routes.draw do
 
-  resources :program
-  resources :stream
+  resources :programs
+  resources :streams
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'program#index'
+  root 'programs#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

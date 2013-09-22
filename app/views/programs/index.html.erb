@@ -1,0 +1,21 @@
+<div class="row center content">
+  <div class="large-12 columns">
+    <h2><%= t('.title') %></h2>
+
+    <% if @programs.count == 0 %>
+      <p><%= t('.none') %></p>
+    <% else %>
+      <table>
+        <%= @programs.each do |program| %>
+          <tr>
+            <td>
+              <%= program.name %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+    <%= link_to('New Stream', new_stream_path, class: 'button') %>
+    <%= link_to('New Podcast', new_program_path, class: 'button') if Stream.all.count > 0 %>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<%= simple_form_for @program  do |f| %>
+  <div class="row">
+    <div class="large-8 columns">
+      <%= f.input :name, class: '' %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.input :stream, collection: Stream.all %>
+    </div>
+  </div>
+  <h5>Time settings</h5>
+  <div class="row">
+    <div class="large-4 columns">
+      <%= f.input :day_of_week, collection: Date::DAYNAMES %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.input :start_at %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.input :length %>
+    </div>
+  </div>
+  <%= f.button :submit, class: 'pure-button pure-button-primary' %>
+<% end %>

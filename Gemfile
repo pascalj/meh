@@ -40,6 +40,7 @@ group :development do
   gem 'thin'
 end
 
+gem 'zurb-foundation'
 gem 'simple_form'
 
 # Use ActiveModel has_secure_password
