@@ -8,6 +8,9 @@ Vagrant.configure("2") do |config|
   # Private network for NFS
   config.vm.network :private_network, ip: "10.0.0.2"
 
+  # forward rails
+  config.vm.network :forwarded_port, guest: 3000, host: 3000
+
   # configure the NICs
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--nictype1", "virtio"]

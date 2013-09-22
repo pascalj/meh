@@ -93,7 +93,6 @@ end
 node['mysql']['server']['packages'].each do |package_name|
   package package_name do
     action :install
-    p "STARTING!!!!!!!!!!"
     notifies :start, "service[mysql]", :immediately
   end
 end
@@ -147,7 +146,7 @@ if platform_family?(%w{mac_os_x})
   end
 else
   execute 'mysql-install-db' do
-    command "mysql_install_db --basedir=#{node['mysql']['basedir']}"
+    command "mysql_install_db"
     action :run
     not_if { File.exists?(node['mysql']['data_dir'] + '/mysql/user.frm') }
   end
