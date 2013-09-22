@@ -2,3 +2,6 @@ language: ruby
 rvm:
   - "1.9.3"
 script: bundle exec rspec spec
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - mysql -e 'create database meh_test'
