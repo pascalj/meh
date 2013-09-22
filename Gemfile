@@ -36,7 +36,11 @@ group :development do
   gem 'vagrant'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'quiet_assets'
+  gem 'thin'
 end
+
+gem 'simple_form'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
