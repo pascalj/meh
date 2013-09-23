@@ -1,0 +1,10 @@
+<div class="row center program">
+  <div class="large-12">
+    <h2><%= @program.name %> <small><%= @program.stream.name %></small></h2>
+    <dl><dt>Day of week</dt><dd><%= @program.day_of_week.inspect %></dd></dl>
+    <dl><dt>Start</dt><dd><%= @program.start_at.inspect %></dd></dl>
+    <dl><dt>Duration</dt><dd><%= @program.length %> minutes</dd></dl>
+
+    <h3>Episodes</h3>
+  </div>
+</div>

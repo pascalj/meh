@@ -6,10 +6,29 @@
       <p><%= t('.none') %></p>
     <% else %>
       <table>
-        <%= @programs.each do |program| %>
+        <thead>
+          <tr>
+            <th>
+              Name
+            </th>
+            <th>
+              Stream
+            </th>
+            <th>
+              Record at
+            </th>
+          </tr>
+        </thead>
+        <% @programs.each do |program| %>
           <tr>
             <td>
               <%= program.name %>
+            </td>
+            <td>
+              <%= program.stream.name %>
+            </td>
+            <td>
+              <%= program.day_of_week %> <%= program.start_at %> for <%= program.length %>
             </td>
           </tr>
         <% end %>

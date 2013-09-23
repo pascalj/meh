@@ -37,6 +37,22 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
+table {
+  width: 100%;
+}
+
+dl {
+  dt {
+    width: 30%;
+    float: left;
+  }
+
+  dd {
+    width: 70%;
+    float: left;
+  }
+}
+
 footer {
   font-size: 13px;
   &, & a {

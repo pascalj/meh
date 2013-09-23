@@ -17,3 +17,4 @@
 
 /.vagrant
 /chef/tmp
+/config/database.yml
