@@ -33,12 +33,12 @@ class ProgramsController < ApplicationController
   def destroy
     @program = Program.find(params[:id])
     @program.destroy!
-    render nothing: true
+    redirect_to action: :index
   end
 
   private
 
   def program_params
-    params.require(:program).permit(:name, :length, :stream, :stream_id, :start_at)
+    params.require(:program).permit(:name, :length, :stream, :stream_id, :start_at, :day_of_week)
   end
 end

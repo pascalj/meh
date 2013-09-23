@@ -61,6 +61,12 @@ describe ProgramsController do
         post :create, program: program.attributes
         program.start_at.hour.should == assigns(:program).start_at.hour
       end
+
+      it "sets the day_of_week" do
+        program = FactoryGirl.build(:program)
+        post :create, program: program.attributes
+        program.day_of_week.should == assigns(:program).day_of_week
+      end
     end
 
     context "with invalid data" do
@@ -126,7 +132,11 @@ describe ProgramsController do
       expect{
         delete :destroy, id: @program.id
       }.to change(Program, :count).by(-1)
+    end
 
+    it "should redirect to #index" do
+      delete :destroy, id: @program.id
+      response.should redirect_to(action: :index)
     end
   end
 end

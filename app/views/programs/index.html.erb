@@ -28,7 +28,7 @@
               <%= program.stream.name %>
             </td>
             <td>
-              <%= program.day_of_week %> <%= program.start_at %> for <%= program.length %>
+              <%= Date::DAYNAMES[program.day_of_week] %> <%= program.start_at.strftime('%H:%M') %> for <%= program.length %> minutes
             </td>
           </tr>
         <% end %>

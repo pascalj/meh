@@ -2,8 +2,8 @@
   <div class="large-12">
     <h2><%= @program.name %> <small><%= @program.stream.name %></small></h2>
     <dl>
-      <dt>Day of week</dt><dd><%= @program.day_of_week.inspect %></dd>
-      <dt>Start</dt><dd><%= @program.start_at.inspect %></dd>
+      <dt>Day of week</dt><dd><%= Date::DAYNAMES[@program.day_of_week] %></dd>
+      <dt>Start</dt><dd><%= @program.start_at.strftime('%H:%M') %></dd>
       <dt>Duration</dt><dd><%= @program.length %> minutes</dd>
     </dl>
 
