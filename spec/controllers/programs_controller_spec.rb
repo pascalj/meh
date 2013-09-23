@@ -55,6 +55,12 @@ describe ProgramsController do
         post :create, program: FactoryGirl.build(:program).attributes
         response.should redirect_to(Program.last)
       end
+
+      it "sets the starttime" do
+        program = FactoryGirl.build(:program)
+        post :create, program: program.attributes
+        program.start_at.hour.should == assigns(:program).start_at.hour
+      end
     end
 
     context "with invalid data" do

@@ -34,6 +34,6 @@ class ProgramsController < ApplicationController
   private
 
   def program_params
-    params.require(:program).permit(:name, :length, :stream, :stream_id)
+    params.require(:program).permit(:name, :length, :stream, :stream_id, :start_at)
   end
 end
