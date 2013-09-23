@@ -10,7 +10,7 @@
   <h5>Time settings</h5>
   <div class="row">
     <div class="large-4 columns">
-      <%= f.input :day_of_week, collection: Date::DAYNAMES %>
+      <%= f.input :day_of_week, collection: Date::DAYNAMES.each_with_index.map {|x,i| [x, i] } %>
     </div>
     <div class="large-4 columns">
       <%= f.input :start_at %>

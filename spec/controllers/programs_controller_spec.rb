@@ -116,4 +116,17 @@ describe ProgramsController do
       end
     end
   end
+
+  describe "DELETE #destroy" do
+    before :each do
+      @program = FactoryGirl.create(:program)
+    end
+
+    it "deletes the record" do
+      expect{
+        delete :destroy, id: @program.id
+      }.to change(Program, :count).by(-1)
+
+    end
+  end
 end

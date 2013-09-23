@@ -30,6 +30,11 @@ class ProgramsController < ApplicationController
     end
   end
 
+  def destroy
+    @program = Program.find(params[:id])
+    @program.destroy!
+    render nothing: true
+  end
 
   private
 

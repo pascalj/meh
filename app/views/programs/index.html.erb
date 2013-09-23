@@ -22,7 +22,7 @@
         <% @programs.each do |program| %>
           <tr>
             <td>
-              <%= program.name %>
+              <%= link_to(program.name, program_path(program)) %>
             </td>
             <td>
               <%= program.stream.name %>
