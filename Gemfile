@@ -42,6 +42,7 @@ end
 
 gem 'zurb-foundation'
 gem 'simple_form'
+gem 'sidekiq'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

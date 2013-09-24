@@ -18,4 +18,33 @@ describe Podcast do
     podcast.should be_invalid
     podcast.errors[:stream].should_not be_empty
   end
+
+  describe "#schedule_recording" do
+    it "adds episodes to record" do
+      @today = FactoryGirl.create_list(:podcast, 5, :today)
+      expect{
+        Podcast.schedule_recording
+      }.to change(Episode, :count).by(@today.length)
+    end
+
+    it "doesn't schedule an episode twice" do
+      @today = FactoryGirl.create_list(:podcast, 5, :today)
+      expect{
+        Podcast.schedule_recording
+        Podcast.schedule_recording
+      }.to change(Episode, :count).by(@today.length)
+    end
+  end
+
+  describe "scope record_next" do
+    before :each do
+      @today = FactoryGirl.create_list(:podcast, 5, :today);
+      @tomorrow = FactoryGirl.create_list(:podcast, 4, :tomorrow);
+      @yesterday = FactoryGirl.create_list(:podcast, 3, :yesterday);
+    end
+
+    it "finds podcasts which should be recorded next" do
+      Podcast.record_next.count.should == @today.length + @tomorrow.length
+    end
+  end
 end

@@ -10,5 +10,17 @@ FactoryGirl.define do
     trait :invalid do
       name ""
     end
+
+    trait :today do
+      day_of_week Time.now.wday
+    end
+
+    trait :tomorrow do
+      day_of_week Time.now.tomorrow.wday
+    end
+
+    trait :yesterday do
+      day_of_week Time.now.yesterday.wday
+    end
   end
 end
