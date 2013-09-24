@@ -1,0 +1,13 @@
+<div class="row center podcast">
+  <div class="large-12">
+    <h2><%= @podcast.name %> <small><%= @podcast.stream.name %></small></h2>
+    <dl>
+      <dt>Day of week</dt><dd><%= Date::DAYNAMES[@podcast.day_of_week] %></dd>
+      <dt>Start</dt><dd><%= @podcast.start_at.strftime('%H:%M') %></dd>
+      <dt>Duration</dt><dd><%= @podcast.length %> minutes</dd>
+    </dl>
+
+    <%= link_to('Delete', podcast_path(@podcast), method: :delete, class: 'button') %>
+    <h3>Episodes</h3>
+  </div>
+</div>

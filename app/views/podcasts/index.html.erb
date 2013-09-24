@@ -2,7 +2,7 @@
   <div class="large-12 columns">
     <h2><%= t('.title') %></h2>
 
-    <% if @programs.count == 0 %>
+    <% if @podcasts.count == 0 %>
       <p><%= t('.none') %></p>
     <% else %>
       <table>
@@ -19,22 +19,22 @@
             </th>
           </tr>
         </thead>
-        <% @programs.each do |program| %>
+        <% @podcasts.each do |podcast| %>
           <tr>
             <td>
-              <%= link_to(program.name, program_path(program)) %>
+              <%= link_to(podcast.name, podcast_path(podcast)) %>
             </td>
             <td>
-              <%= program.stream.name %>
+              <%= podcast.stream.name %>
             </td>
             <td>
-              <%= Date::DAYNAMES[program.day_of_week] %> <%= program.start_at.strftime('%H:%M') %> for <%= program.length %> minutes
+              <%= Date::DAYNAMES[podcast.day_of_week] %> <%= podcast.start_at.strftime('%H:%M') %> for <%= podcast.length %> minutes
             </td>
           </tr>
         <% end %>
       </table>
     <% end %>
     <%= link_to('New Stream', new_stream_path, class: 'button') %>
-    <%= link_to('New Podcast', new_program_path, class: 'button') if Stream.all.count > 0 %>
+    <%= link_to('New Podcast', new_podcast_path, class: 'button') if Stream.all.count > 0 %>
   </div>
 </div>

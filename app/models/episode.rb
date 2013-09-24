@@ -1,5 +1,5 @@
 class Episode < ActiveRecord::Base
-  belongs_to :program
+  belongs_to :podcast
 
-  validates_presence_of :program
+  validates_presence_of :podcast
 end

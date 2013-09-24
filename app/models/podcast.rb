@@ -1,4 +1,4 @@
-class Program < ActiveRecord::Base
+class Podcast < ActiveRecord::Base
 
   belongs_to :stream
 

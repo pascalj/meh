@@ -27,7 +27,7 @@ en:
       description: |
         To record podcasts, you have to create streams first. Just enter a name, for example
         "My Favorite Radio Station" and the URL to the direct audio stream.
-  programs:
+  podcasts:
     new:
       title: New podcast
       description: |

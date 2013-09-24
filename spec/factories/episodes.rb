@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :episode do
-    program { FactoryGirl.create(:program) }
+    podcast { FactoryGirl.create(:podcast) }
   end
 end

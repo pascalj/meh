@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
-  factory :program do
-    name "My Program"
+  factory :podcast do
+    name "My Podcast"
     stream { FactoryGirl.create(:stream) }
     length 60
     start_at Time.now

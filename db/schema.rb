@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130924184842) do
+ActiveRecord::Schema.define(version: 20130924205111) do
 
   create_table "episodes", force: true do |t|
-    t.integer  "program_id"
+    t.integer  "podcast_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "programs", force: true do |t|
+  create_table "podcasts", force: true do |t|
     t.string   "name"
     t.time     "start_at"
     t.integer  "length"
