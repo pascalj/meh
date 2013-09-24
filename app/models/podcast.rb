@@ -1,5 +1,9 @@
 class Podcast < ActiveRecord::Base
+  extend FriendlyId
+
   belongs_to :stream
+
+  friendly_id :name
 
   validates_presence_of :name, :stream
   validates :length, numericality: { greater_than: 0 }

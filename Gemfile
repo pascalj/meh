@@ -43,6 +43,7 @@ end
 gem 'zurb-foundation'
 gem 'simple_form'
 gem 'sidekiq'
+gem 'friendly_id', git: 'https://github.com/norman/friendly_id.git'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

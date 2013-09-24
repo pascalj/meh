@@ -8,7 +8,7 @@ class PodcastsController < ApplicationController
   end
 
   def show
-    @podcast = Podcast.find(params[:id])
+    @podcast = Podcast.friendly.find(params[:id])
   end
 
   def create
@@ -22,7 +22,7 @@ class PodcastsController < ApplicationController
   end
 
   def update
-    @podcast = Podcast.find(params[:id])
+    @podcast = Podcast.friendly.find(params[:id])
     if @podcast.update(podcast_params)
       redirect_to @podcast
     else
@@ -31,7 +31,7 @@ class PodcastsController < ApplicationController
   end
 
   def destroy
-    @podcast = Podcast.find(params[:id])
+    @podcast = Podcast.friendly.find(params[:id])
     @podcast.destroy!
     redirect_to action: :index
   end
