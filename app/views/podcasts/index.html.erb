@@ -2,6 +2,10 @@
   <div class="large-12 columns">
     <h2><%= t('.title') %></h2>
 
+    <% unless streamripper_installed? %>
+      <div class="alert-box alert">Streamripper doesn't seem to be in PATH. Install streamripper to record episodes.</div>
+    <% end %>
+
     <% if @podcasts.count == 0 %>
       <p><%= t('.none') %></p>
     <% else %>

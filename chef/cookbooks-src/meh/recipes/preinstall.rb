@@ -33,3 +33,4 @@ end
 # rails needs node for the assets
 # and the node recipes suck
 package "node"
+package "streamripper"
