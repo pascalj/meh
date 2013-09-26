@@ -16,4 +16,42 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+function ready() {
+  $(document).foundation();
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll({
+      css: false,
+      createPlayer: {
+        markup: '\
+          <div class="play-pause"> \
+            <p class="play">Play</p> \
+            <p class="pause">Pause</p> \
+            <p class="loading"></p> \
+            <p class="error"></p> \
+          </div> \
+          <div class="scrubber"> \
+            <div class="progress"></div> \
+            <div class="loaded"></div> \
+          </div> \
+          <div class="time"> \
+            <span class="played">00:00</span> / <span class="duration">00:00</span> \
+          </div> \
+          <div class="error-message"></div>',
+        playPauseClass: 'play-pause',
+        scrubberClass: 'scrubber',
+        progressClass: 'progress',
+        loaderClass: 'loaded',
+        timeClass: 'time',
+        durationClass: 'duration',
+        playedClass: 'played',
+        errorMessageClass: 'error-message',
+        playingClass: 'playing',
+        loadingClass: 'loading',
+        errorClass: 'error'
+      }
+    });
+  });
+}
+
+$(document).on('page:load', ready);
+$(document).on('ready', ready);

@@ -7,4 +7,92 @@ body.scope-podcasts {
       width: 50px;
     }
   }
+
+  .audiojs {
+    height: 40px;
+    position: relative;
+    border-radius: 2px;
+    overflow: hidden;
+
+    background: #4AFFAB;
+    color: #fff;
+
+    .scrubber {
+      position: relative;
+      background: #ccc;
+      border: none;
+      margin-left: 120px;
+      height: 40px;
+      .progress {
+        border: none;
+        background-color: #1E7BA0;
+        height: 37px;
+        padding:0;
+        margin: 0;
+        cursor: pointer;
+      }
+
+      .loaded {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        background-color: #FF6D6B;
+      }
+    }
+
+    .time {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+
+    .error-message {
+      position: absolute;
+      right: 110px;
+      top: 10px;
+    }
+
+    .play-pause {
+      position: relative;
+      height: 40px;
+      width: 120px;
+      float: left;
+      cursor: pointer;
+
+      .pause, .play {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 120px;
+        height: 40px;
+        display: block;
+        line-height: 40px;
+        text-align: center;
+        background-color: #2BA6CB;
+      }
+
+      .pause {
+        display: none;
+      }
+      .play {
+        display: block;
+      }
+
+      .error, .loading {
+        display: none;
+      }
+    }
+
+    &.playing {
+      .play-pause {
+        .pause {
+          display: block;
+        }
+        .play {
+          display: none;
+        }
+      }
+    }
+  }
 }

@@ -22,6 +22,19 @@ describe RecordWorker do
       FileUtils.should_receive(:mv).with(tmp + '.mp3', destination)
       worker.perform(episode.id)
     end
+
+    it "sets the finshed_at" do
+      episode = FactoryGirl.create(:episode, :scheduled)
+      tmp = '/tmp/foo'
+      worker = RecordWorker.new
+      worker.stub(:start_record).and_return("")
+      worker.stub(:system)
+      FileUtils.stub(:mkdir_p)
+      FileUtils.stub(:mv)
+      worker.perform(episode.id)
+      episode.reload
+      episode.finished_at.should_not be_nil
+    end
   end
 
   describe "#start_record" do

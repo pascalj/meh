@@ -1,2 +1,3 @@
 recording:
   target_directory: '/tmp'
+episode_dl_prefix: http://dl.example.com/

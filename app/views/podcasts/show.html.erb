@@ -1,13 +1,20 @@
 <div class="row center podcast">
   <div class="large-12">
-    <h2><%= @podcast.name %> <small><%= @podcast.stream.name %></small></h2>
-    <dl>
-      <dt>Day of week</dt><dd><%= Date::DAYNAMES[@podcast.day_of_week] %></dd>
-      <dt>Start</dt><dd><%= @podcast.start_at.strftime('%H:%M') %></dd>
-      <dt>Duration</dt><dd><%= @podcast.length %> minutes</dd>
-    </dl>
+    <h2><%= @podcast.name %> <small><%= @podcast.stream.name %>, <%= Date::DAYNAMES[@podcast.day_of_week] %>s at <%= @podcast.start_at.strftime('%H:%M') %></small></h2>
+    
+    <% @episodes.each_with_index do |episode, index| %>
+      <div class="episode">
+        <% if index == 0 %>
+          <h4><%= episode.scheduled_at.strftime('%d.%m.%Y') %> <small>latest</small></h4>
+        <% else %>
+          <h4><%= episode.scheduled_at.strftime('%d.%m.%Y') %></h4>
+        <% end %>
+        <audio src="<%= episode_file_url(episode) %>" preload="auto" />
+      </div>
+    <% end %>
 
-    <%= link_to('Delete', podcast_path(@podcast), method: :delete, class: 'button') %>
-    <h3>Episodes</h3>
+    <div class="buttons">
+      <%= link_to('Delete Podcast', podcast_path(@podcast), method: :delete, class: 'button small') %>
+    </div>
   </div>
 </div>

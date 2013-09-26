@@ -4,6 +4,9 @@ class Episode < ActiveRecord::Base
   validates_presence_of :podcast
 
   scope :scheduled, -> { where("scheduled_at > ?", Time.now) }
+  scope :finished, -> { where("finished_at IS NOT NULL") }
+  scope :unfinished, -> { where("finished_at IS NULL") }
+
 
   def schedule
     scheduled_at = Time.zone.now

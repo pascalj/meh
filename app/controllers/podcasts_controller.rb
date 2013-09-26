@@ -9,6 +9,7 @@ class PodcastsController < ApplicationController
 
   def show
     @podcast = Podcast.friendly.find(params[:id])
+    @episodes = Episode.finished.where(podcast: @podcast)
   end
 
   def create
@@ -19,6 +20,10 @@ class PodcastsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @podcast = Podcast.friendly.find(params[:id])
   end
 
   def update

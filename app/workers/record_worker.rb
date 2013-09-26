@@ -8,6 +8,8 @@ class RecordWorker
     destination = File.join(Settings[:recording][:target_directory], episode.filename)
     FileUtils.mkdir_p(Settings[:recording][:target_directory])
     FileUtils.mv(current_path, destination)
+    episode.finished_at = Time.now
+    episode.save
   end
 
   def start_record(episode)
