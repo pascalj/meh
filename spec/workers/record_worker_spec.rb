@@ -8,7 +8,7 @@ describe RecordWorker do
       worker = RecordWorker.new
       worker.should_receive(:start_record).and_return(tmp)
       destination = File.join(Settings[:recording][:target_directory], episode.filename)
-      FileUtils.should_receive(:cp).with(tmp, destination)
+      FileUtils.should_receive(:mv).with(tmp + '.mp3', destination)
       worker.perform(episode.id)
     end
 
@@ -19,7 +19,7 @@ describe RecordWorker do
       worker.should_receive(:start_record).and_return(tmp)
       destination = File.join(Settings[:recording][:target_directory], episode.filename)
       FileUtils.should_receive(:mkdir_p).with(Settings[:recording][:target_directory])
-      FileUtils.should_receive(:cp).with(tmp, destination)
+      FileUtils.should_receive(:mv).with(tmp + '.mp3', destination)
       worker.perform(episode.id)
     end
   end
