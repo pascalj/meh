@@ -13,4 +13,8 @@ class Podcast < ActiveRecord::Base
   def self.schedule_recording
     Episode.schedule_for_podcasts(Podcast.all)
   end
+
+  def save_name
+    self.name.tr('^A-Za-z', '').downcase
+  end
 end

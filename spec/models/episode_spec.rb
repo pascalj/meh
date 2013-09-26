@@ -12,9 +12,9 @@ describe Episode do
 
   describe "scope scheduled" do
 
-    it "finds episodes that are schedules" do
+    it "finds episodes that are scheduled" do
       @scheduled = FactoryGirl.create_list(:episode, 4, :scheduled)
-      Episode.scheduled.count.should == @scheduled.length
+      Episode.scheduled.should =~ @scheduled
     end
 
     it "ignores episodes that were scheduled in the past" do
@@ -64,5 +64,11 @@ describe Episode do
         Episode.schedule_for_podcasts(@podcasts)
       }.to change(Episode, :count).by(@podcasts.length)
     end
+  end
+
+  describe "#filename" do
+    episode = FactoryGirl.create(:episode, :scheduled)
+    generated_filename = "#{episode.podcast.save_name}-#{episode.scheduled_at.strftime('%Y-%m-%d')}.mp3"
+    episode.filename.should == generated_filename
   end
 end

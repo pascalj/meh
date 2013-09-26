@@ -15,6 +15,7 @@ class Episode < ActiveRecord::Base
     end
     self.scheduled_at = scheduled_at
     self.save
+    RecordWorker.perform_at(self.scheduled_at, self.id)
   end
 
   def self.schedule_for_podcasts(podcasts)
@@ -24,5 +25,9 @@ class Episode < ActiveRecord::Base
         episode.schedule
       end
     end
+  end
+
+  def filename
+    "#{self.podcast.save_name}-#{self.scheduled_at.strftime('%Y-%m-%d')}.mp3"
   end
 end

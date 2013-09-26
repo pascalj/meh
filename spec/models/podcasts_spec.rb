@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'spec_helper'
 
 describe Podcast do
@@ -34,6 +36,12 @@ describe Podcast do
         Podcast.schedule_recording
       }.to change(Episode, :count).by(@today.length)
     end
+
+    it "schedules the recording at scheduled_at" do
+      podcast = FactoryGirl.create(:podcast, :tomorrow)
+      RecordWorker.should_receive(:perform_at)
+      Podcast.schedule_recording
+    end
   end
 
   describe "scope record_next" do
@@ -45,6 +53,14 @@ describe Podcast do
 
     it "finds podcasts which should be recorded next" do
       Podcast.record_next.count.should == @today.length + @tomorrow.length
+    end
+  end
+
+  describe "#save_name" do
+
+    it "strips all but A-Za-z" do
+      podcast = FactoryGirl.build(:podcast, name: 'MÖÄÜy42##2!$%&/1P0odcast66')
+      podcast.save_name.should == 'mypodcast'
     end
   end
 end

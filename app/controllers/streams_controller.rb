@@ -8,7 +8,7 @@ class StreamsController < ApplicationController
   end
 
   def show
-    @stream = Stream.find(params[:id])
+    @stream = Stream.friendly.find(params[:id])
   end
 
   def create
@@ -22,7 +22,7 @@ class StreamsController < ApplicationController
   end
 
   def update
-    @stream = Stream.find(params[:id])
+    @stream = Stream.friendly.find(params[:id])
     if @stream.update(stream_params)
       redirect_to @stream
     else

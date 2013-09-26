@@ -34,3 +34,10 @@ end
 # and the node recipes suck
 package "node"
 package "streamripper"
+package "redis"
+service "redis" do
+  action :disable
+end
+service "redis" do 
+  action :start
+end
