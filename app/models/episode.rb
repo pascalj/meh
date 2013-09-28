@@ -18,7 +18,7 @@ class Episode < ActiveRecord::Base
     end
     self.scheduled_at = scheduled_at
     self.save
-    RecordWorker.perform_at(self.scheduled_at, self.id)
+    RecordWorker.perform_at(self.scheduled_at.utc, self.id)
   end
 
   def self.schedule_for_podcasts(podcasts)
