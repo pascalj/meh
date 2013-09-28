@@ -41,7 +41,12 @@ Meh should now be running. Now add a stream and a podcast and run:
 rake meh:schedule
 ```
 
-It will schedule the actual recordings. If you're running *meh* on a webserver you should install a cronjob to execute this rake task regularly. Once a week should be sufficient, but you can execute it more often, if you're more comfortable with that. 
+It will schedule the actual recordings. If you're running *meh* on a webserver you should install a cronjob to execute this rake task regularly. Once a week should be sufficient, but you can execute it more often, if you're more comfortable with that.
+
+**Note:** It's important to set the timezone correctly or *meh* will assume UTC for the podcats' starting times.
+Example for Berlin in `config/application.rb`:
+
+`config.time_zone = 'Berlin'`
 
 ## Contributing
 

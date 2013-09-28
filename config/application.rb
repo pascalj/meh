@@ -13,6 +13,9 @@ Bundler.require(:default, Rails.env)
 
 module Meh
   class Application < Rails::Application
+    # change the time zone to your local setting
+    config.time_zone = 'UTC'
+
     config.generators.stylesheets = false
     config.generators.javascripts = false
     config.generators.helper      = false
