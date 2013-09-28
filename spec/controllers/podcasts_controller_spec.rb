@@ -139,4 +139,14 @@ describe PodcastsController do
       response.should redirect_to(action: :index)
     end
   end
+
+  describe "feed" do
+    before :each do
+      @podcast = FactoryGirl.create(:podcast)
+      get :show, id: @podcast.id, format: :rss
+    end
+    it "responds with XML" do
+      response.should have_content_type('application/rss+xml')
+    end
+  end
 end

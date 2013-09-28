@@ -38,6 +38,7 @@ group :development do
   gem 'factory_girl_rails'
   gem 'quiet_assets'
   gem 'thin'
+  gem 'rspec-xml'
 end
 
 gem 'zurb-foundation'

@@ -2,6 +2,7 @@ class Podcast < ActiveRecord::Base
   extend FriendlyId
 
   belongs_to :stream
+  has_many :episodes
 
   friendly_id :name
 
