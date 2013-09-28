@@ -23,7 +23,7 @@ class Episode < ActiveRecord::Base
 
   def self.schedule_for_podcasts(podcasts)
     podcasts.each do |podcast|
-      unless self.scheduled.where(podcast: podcast).first
+      unless self.scheduled.unfinished.where(podcast: podcast).first
         episode = self.new(podcast: podcast)
         episode.schedule
       end
