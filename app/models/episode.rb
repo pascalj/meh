@@ -16,7 +16,7 @@ class Episode < ActiveRecord::Base
     if scheduled_at < Time.zone.now
       scheduled_at += 7.days
     end
-    self.scheduled_at = scheduled_at.utc
+    self.scheduled_at = scheduled_at
     self.save
     RecordWorker.perform_at(self.scheduled_at, self.id)
   end
