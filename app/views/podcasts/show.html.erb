@@ -1,6 +1,10 @@
 <div class="row center podcast">
   <div class="large-12">
     <h2><%= @podcast.name %> <small><%= @podcast.stream.name %>, <%= Date::DAYNAMES[@podcast.day_of_week] %>s at <%= @podcast.start_at.strftime('%H:%M') %></small></h2>
+
+    <p>
+      Feed: <input class="feed-url" value="<%= podcast_url(@podcast, format: :rss) %>" />
+    </p>
     
     <% @episodes.each_with_index do |episode, index| %>
       <div class="episode">

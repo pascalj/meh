@@ -51,6 +51,9 @@ function ready() {
       }
     });
   });
+  $('.feed-url').click(function() {
+    $(this).select();
+  });
 }
 
 $(document).on('page:load', ready);
