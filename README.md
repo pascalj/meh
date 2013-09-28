@@ -46,6 +46,7 @@ It will schedule the actual recordings. If you're running *meh* on a webserver y
 ## Contributing
 
 If you find a bug or want to add something please send me a pull request. I'll be glad to merge it. Just make sure the tests are passing by running `rake spec`. If you add code, please consider adding tests for it. Bug reports are also highly appreciated.
+*meh* uses [Vagrant](http://www.vagrantup.com/) to make the development easier. To import the VM and set everything up, just install Vagrant and run `vagrant up`. You can ssh into the VM via `vagrant ssh`. The source is mounted at `/vagrant`.
 
 ##Copyright
 ###The MIT Licence
