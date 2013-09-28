@@ -13,10 +13,10 @@ class Episode < ActiveRecord::Base
     # next day_of_week
     scheduled_at += ((self.podcast.day_of_week - scheduled_at.wday) % 7).days
     scheduled_at = scheduled_at.change(hour: self.podcast.start_at.hour, min: self.podcast.start_at.min, second: 0)
-    if scheduled_at < Time.now
+    if scheduled_at < Time.zone.now
       scheduled_at += 7.days
     end
-    self.scheduled_at = scheduled_at
+    self.scheduled_at = scheduled_at.utc
     self.save
     RecordWorker.perform_at(self.scheduled_at, self.id)
   end

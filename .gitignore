@@ -18,6 +18,7 @@
 /.vagrant
 /chef/tmp
 /config/database.yml
+/config/initializers/timezone.rb
 
 config/settings.local.yml
 config/settings/*.local.yml
