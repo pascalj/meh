@@ -4,6 +4,7 @@ describe "podcast feed" do
   before :each do
     @podcast = FactoryGirl.create(:podcast)
     @episode = FactoryGirl.create(:episode, :scheduled, finished_at: Time.now, podcast: @podcast)
+    File.stub(:size).and_return(150)
     get podcast_path(@podcast, format: :rss)
   end
 
@@ -17,5 +18,9 @@ describe "podcast feed" do
 
   it "outputs the last episodes" do
     response.body.should have_xpath('/rss/channel/item')
+  end
+
+  it "sets the enclosure" do
+    response.body.should have_xpath('/rss/channel/item/enclosure')
   end
 end

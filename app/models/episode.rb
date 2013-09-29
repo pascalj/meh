@@ -33,4 +33,8 @@ class Episode < ActiveRecord::Base
   def filename
     "#{self.podcast.save_name}-#{self.scheduled_at.strftime('%Y-%m-%d')}.mp3"
   end
+
+  def path_and_filename
+    File.join(Settings[:recording][:target_directory], self.filename)
+  end
 end
