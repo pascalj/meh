@@ -1,6 +1,9 @@
 <div class="row center podcast">
   <div class="large-12 columns">
     <h2><%= @podcast.name %> <small><%= @podcast.stream.name %>, <%= Date::DAYNAMES[@podcast.day_of_week] %>s at <%= @podcast.start_at.strftime('%H:%M') %></small></h2>
+    <div class="buttons">
+      <%= link_to('Edit Podcast', edit_podcast_path(@podcast), class: 'button tiny') %>
+    </div>
 
     <div class="row">
       <div class="large-1 columns">
@@ -16,12 +19,8 @@
         <% else %>
           <h4><%= episode.scheduled_at.strftime('%d.%m.%Y') %></h4>
         <% end %>
-        <audio src="<%= episode_file_url(episode) %>" preload="auto" />
+        <audio src="<%= episode_file_url(episode) %>" preload="metadata" />
       </div>
     <% end %>
-
-    <div class="buttons">
-      <%= link_to('Delete Podcast', podcast_path(@podcast), method: :delete, class: 'button small') %>
-    </div>
   </div>
 </div>

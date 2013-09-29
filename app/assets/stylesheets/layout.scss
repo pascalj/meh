@@ -43,7 +43,14 @@ table {
 }
 
 div.buttons {
-  margin: 20px 0;
+  margin: 20px 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.button.alert {
+  color: #fff;
 }
 
 dl {

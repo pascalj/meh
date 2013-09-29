@@ -17,6 +17,11 @@ body.scope-podcasts {
     background: #4AFFAB;
     color: #fff;
 
+    audio {
+      position: absolute;
+      left: -1px;
+    }
+
     .scrubber {
       position: relative;
       background: #ccc;
