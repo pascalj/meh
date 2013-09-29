@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Meh</title>
+  <title>meh</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -10,7 +10,8 @@
   <header>
     <div class="row center">
       <div class="large-12 columns">
-        <h1><%= link_to('Meh', root_path) %></h1>
+        <h1><%= link_to('meh', root_path) %></h1>
+        <%= link_to('+', new_podcast_path, class: 'new-podcast-button') %>
       </div>
     </div>
   </header>
@@ -20,7 +21,7 @@
   <footer>
     <div class="row center">
       <div class="large-12 columns">
-        <a href="https://github.com/pascalj/meh">meh</meh></a> by <a href="http://pascalj.com">Pascal Jungblut</a> — MIT Licence
+        <a href="https://github.com/pascalj/meh">meh</a> by <a href="http://pascalj.com">Pascal Jungblut</a> — MIT Licence
       </div>
     </div>
   </footer>

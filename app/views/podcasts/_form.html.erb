@@ -5,6 +5,7 @@
     </div>
     <div class="large-4 columns">
       <%= f.input :stream_id, collection: Stream.all %>
+      <%= link_to('New Stream', new_stream_path, class: 'button small') %>
     </div>
   </div>
   <h5>Time settings</h5>

@@ -1,3 +1,4 @@
+$darkblue: #1E7BA0;
 .center {
   max-width: 1040px;
   margin: 0 auto;
@@ -5,16 +6,36 @@
 }
 
 header {
-  background-color: #1E7BA0;
+  background-color: $darkblue;
   &, & h1, & h1 a, , & h1 a:hover {
     color: #fff;
-    margin-bottom: 0.2em;
     text-decoration: none;
+  }
+
+  h1 {
+    float: left;
+    padding: 0.2em 0;
+    margin: 0;
   }
 
   h1 a {
     background: transparent url(record_sign.png) no-repeat left top;
     padding-left: 70px;
+  }
+
+  .new-podcast-button {
+    height: 100%;
+    width: 50px;
+    color: #fff;
+    font-size: 2.75em;
+    float: right;
+    display: block;
+    line-height: 1.4;
+    padding: 0.2em 0;
+    text-align: center;
+    &:hover {
+      background-color: lighten($darkblue, 10%);
+    }
   }
 }
 
