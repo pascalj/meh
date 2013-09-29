@@ -19,7 +19,7 @@
         <% else %>
           <h4><%= episode.scheduled_at.strftime('%d.%m.%Y') %></h4>
         <% end %>
-        <audio src="<%= episode_file_url(episode) %>" preload="metadata" />
+        <audio src="<%= episode_file_url(episode) %>" preload="none"/>
       </div>
     <% end %>
   </div>
