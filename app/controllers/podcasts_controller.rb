@@ -10,7 +10,7 @@ class PodcastsController < ApplicationController
 
   def show
     @podcast = Podcast.friendly.find(params[:id])
-    @episodes = Episode.finished.where(podcast: @podcast)
+    @episodes = Episode.finished.where(podcast: @podcast).order(finished_at: :desc)
   end
 
   def create

@@ -1,4 +1,6 @@
 class Episode < ActiveRecord::Base
+  extend FriendlyId
+
   belongs_to :podcast
 
   validates_presence_of :podcast
@@ -6,6 +8,8 @@ class Episode < ActiveRecord::Base
   scope :scheduled, -> { where("scheduled_at > ?", Time.now) }
   scope :finished, -> { where("finished_at IS NOT NULL") }
   scope :unfinished, -> { where("finished_at IS NULL") }
+
+  friendly_id :date_slug, use: :slugged
 
 
   def schedule
@@ -36,5 +40,9 @@ class Episode < ActiveRecord::Base
 
   def path_and_filename
     File.join(Settings[:recording][:target_directory], self.filename)
+  end
+
+  def date_slug
+    "#{self.scheduled_at.strftime('%Y-%m-%d')}-#{self.podcast.name}"
   end
 end

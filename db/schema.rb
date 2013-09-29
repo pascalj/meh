@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130926133508) do
+ActiveRecord::Schema.define(version: 20130929145718) do
 
   create_table "episodes", force: true do |t|
     t.integer  "podcast_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20130926133508) do
     t.datetime "updated_at"
     t.datetime "scheduled_at"
     t.datetime "finished_at"
+    t.string   "slug"
   end
 
   create_table "friendly_id_slugs", force: true do |t|
@@ -42,6 +43,7 @@ ActiveRecord::Schema.define(version: 20130926133508) do
     t.integer  "stream_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   create_table "streams", force: true do |t|
@@ -49,6 +51,7 @@ ActiveRecord::Schema.define(version: 20130926133508) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
 end

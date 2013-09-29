@@ -4,7 +4,7 @@ class Podcast < ActiveRecord::Base
   belongs_to :stream
   has_many :episodes
 
-  friendly_id :name
+  friendly_id :name, use: :slugged
 
   validates_presence_of :name, :stream
   validates :length, numericality: { greater_than: 0 }
