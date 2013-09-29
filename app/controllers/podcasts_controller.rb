@@ -1,7 +1,7 @@
 class PodcastsController < ApplicationController
 
   def index
-    @podcasts = Podcast.all.sort(name: :asc)
+    @podcasts = Podcast.all.order(name: :asc)
   end
 
   def new
