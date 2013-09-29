@@ -5,7 +5,7 @@ xml.rss :version => "2.0" do
     xml.description ""
     xml.link podcast_url(@podcast)
 
-    for episode in @podcast.episodes
+    for episode in @episodes
       xml.item do
         xml.title "#{@podcast.name} from #{episode.scheduled_at.strftime('%d.%m.%Y')}"
         xml.description ""
