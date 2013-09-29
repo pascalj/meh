@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :episode do
     podcast { FactoryGirl.create(:podcast) }
+    scheduled_at { Time.now.tomorrow }
 
     trait :scheduled do
       scheduled_at { Time.now.tomorrow }

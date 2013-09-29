@@ -17,16 +17,10 @@ describe StreamsController do
   end
 
   describe "GET #show" do
-    it "finds the correct stream" do
+    it "redirects to Podcast#index" do
       stream = FactoryGirl.create(:stream)
       get :show, id: stream.id
-      assigns(:stream).should eq(stream)
-    end
-
-    it "renders the show template" do
-      stream = FactoryGirl.create(:stream)
-      get :show, id: stream.id
-      response.should render_template(:show)
+      response.should redirect_to(podcasts_path)
     end
   end
 

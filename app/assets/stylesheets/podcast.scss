@@ -100,5 +100,9 @@ body.scope-podcasts {
     border: none;
     min-width: 400px;
     font-size: 14px;
+    margin: 0;
+    &:focus {
+      outline-width: 0;
+    }
   }
 }

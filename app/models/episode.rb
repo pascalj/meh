@@ -43,6 +43,10 @@ class Episode < ActiveRecord::Base
   end
 
   def date_slug
-    "#{self.scheduled_at.strftime('%Y-%m-%d')}-#{self.podcast.name}"
+    if self.scheduled_at
+      "#{self.scheduled_at.strftime('%Y-%m-%d')}-#{self.podcast.name}"
+    else
+      nil
+    end
   end
 end

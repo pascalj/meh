@@ -7,7 +7,7 @@ describe Episode do
   end
 
   it "is valid with a stream" do
-    FactoryGirl.build(:episode).should be_valid
+    FactoryGirl.build(:episode, :scheduled).should be_valid
   end
 
   describe "scope scheduled" do

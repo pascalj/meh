@@ -8,7 +8,7 @@ class StreamsController < ApplicationController
   end
 
   def show
-    @stream = Stream.friendly.find(params[:id])
+    redirect_to controller: :podcasts, action: :index, id: nil
   end
 
   def create
