@@ -21,6 +21,7 @@ function ready() {
   audiojs.events.ready(function() {
     var as = audiojs.createAll({
       css: false,
+      settings: { preload: false },
       createPlayer: {
         markup: '\
           <div class="play-pause"> \
