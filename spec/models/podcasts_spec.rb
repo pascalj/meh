@@ -22,6 +22,11 @@ describe Podcast do
   end
 
   describe "#schedule_recording" do
+
+    before :each do
+      RecordWorker.stub(:perform_at) { "JOB_ID" }
+    end
+
     it "adds episodes to record" do
       @today = FactoryGirl.create_list(:podcast, 5, :today)
       expect{

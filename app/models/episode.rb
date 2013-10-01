@@ -13,6 +13,7 @@ class Episode < ActiveRecord::Base
 
 
   def schedule
+    return if Sidekiq::Status.queued?(self.job_id)
     scheduled_at = Time.zone.now
     # next day_of_week
     scheduled_at += ((self.podcast.day_of_week - scheduled_at.wday) % 7).days
@@ -21,14 +22,14 @@ class Episode < ActiveRecord::Base
       scheduled_at += 7.days
     end
     self.scheduled_at = scheduled_at
+    self.job_id = RecordWorker.perform_at(self.scheduled_at.utc, self.id)
     self.save
-    RecordWorker.perform_at(self.scheduled_at.utc, self.id)
   end
 
   def self.schedule_for_podcasts(podcasts)
     podcasts.each do |podcast|
       unless self.scheduled.unfinished.where(podcast: podcast).first
-        episode = self.new(podcast: podcast)
+        episode = self.create(podcast: podcast)
         episode.schedule
       end
     end
