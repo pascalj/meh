@@ -1,8 +1,8 @@
 <div class="row center podcast">
   <div class="large-12 columns">
-    <h2><%= @podcast.name %> <small><%= @podcast.stream.name %>, <%= Date::DAYNAMES[@podcast.day_of_week] %>s at <%= @podcast.start_at.strftime('%H:%M') %></small></h2>
+    <h2><%= @podcast.name %> <small><%= t('.title', stream: @podcast.stream.name, day_of_week: t('date.day_names')[@podcast.day_of_week], time: l(@podcast.start_at, format: :time_only)) %></small></h2>
     <div class="buttons">
-      <%= link_to('Edit Podcast', edit_podcast_path(@podcast), class: 'button tiny') %>
+      <%= link_to(t('.edit_button'), edit_podcast_path(@podcast), class: 'button tiny') %>
     </div>
 
     <div class="row">
@@ -15,9 +15,9 @@
     <% @episodes.each_with_index do |episode, index| %>
       <div class="episode">
         <% if index == 0 %>
-          <h4><%= episode.scheduled_at.strftime('%d.%m.%Y') %> <small>latest</small></h4>
+          <h4><%= l(episode.scheduled_at.to_date) %> <small><%= t('.latest') %></small></h4>
         <% else %>
-          <h4><%= episode.scheduled_at.strftime('%d.%m.%Y') %></h4>
+          <h4><%= l(episode.scheduled_at.to_date) %></h4>
         <% end %>
         <audio src="<%= episode_file_url(episode) %>" preload="none"/>
       </div>

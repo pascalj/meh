@@ -487,8 +487,8 @@ $button-radius: 3px;
 
 // $alert-font-weight: bold;
 // $alert-font-size: emCalc(14);
-// $alert-font-color: #fff;
-// $alert-font-color-alt: darken($secondary-color, 60%);
+$alert-font-color: #fff;
+$alert-font-color-alt: #fff;
 
 // We use this for close hover effect.
 
@@ -496,7 +496,7 @@ $button-radius: 3px;
 
 // We use these to control border styles.
 
-// $alert-border-style: solid;
+$alert-border-style: none;
 // $alert-border-width: 1px;
 // $alert-border-color: darken($primary-color, $alert-function-factor);
 // $alert-bottom-margin: emCalc(20);

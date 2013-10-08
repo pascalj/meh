@@ -3,7 +3,7 @@
     <h2><%= t('.title') %></h2>
 
     <% unless streamripper_installed? %>
-      <div class="alert-box alert">Streamripper doesn't seem to be in PATH. Install streamripper to record episodes.</div>
+      <div class="alert-box alert"><%= t '.streamripper_missing' %></div>
     <% end %>
 
     <% if @podcasts.count == 0 %>
@@ -13,13 +13,13 @@
         <thead>
           <tr>
             <th>
-              Name
+              <%= t '.name' %>
             </th>
             <th>
-              Stream
+              <%= t '.stream' %>
             </th>
             <th>
-              Record at
+              <%= t '.record_at' %>
             </th>
           </tr>
         </thead>
@@ -32,7 +32,7 @@
               <%= podcast.stream.name %>
             </td>
             <td>
-              <%= Date::DAYNAMES[podcast.day_of_week] %> <%= podcast.start_at.strftime('%H:%M') %> for <%= podcast.length %> minutes
+              <%= t('.record_at_details', day_of_week: t('date.day_names')[podcast.day_of_week], time: l(podcast.start_at, format: :time_only), duration: podcast.length) %>
             </td>
           </tr>
         <% end %>
