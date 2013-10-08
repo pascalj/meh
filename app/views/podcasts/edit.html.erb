@@ -1,8 +1,8 @@
 <div class="row center">
   <div class="large-12 columns">
-    <h2>Edit <%= @podcast.name %></h2>
+    <h2><%= t '.title', name: @podcast.name %></h2>
     <div class="buttons">
-      <%= link_to('Delete Podcast', podcast_path(@podcast), method: :delete, class: 'button tiny alert') %>
+      <%= link_to(t('.delete', name: @podcast.name), podcast_path(@podcast), method: :delete, class: 'button tiny alert') %>
     </div>
     <%= render partial: 'form' %>
   </div>
