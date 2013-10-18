@@ -35,6 +35,7 @@ en:
     labels:
       podcast:
         length: 'Duration (minutes)'
+        image: 'Cover Image'
   time:
     formats:
       time_only: ! '%I.%m %p'

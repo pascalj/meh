@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131001192714) do
+ActiveRecord::Schema.define(version: 20131018193523) do
 
   create_table "episodes", force: true do |t|
     t.integer  "podcast_id"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20131001192714) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.string   "image_uid"
+    t.string   "image_name"
   end
 
   create_table "streams", force: true do |t|

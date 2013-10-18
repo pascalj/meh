@@ -1,6 +1,6 @@
 <div class="row center podcast">
   <div class="large-12 columns">
-    <h2><%= @podcast.name %> <small><%= t('.title', stream: @podcast.stream.name, day_of_week: t('date.day_names')[@podcast.day_of_week], time: l(@podcast.start_at, format: :time_only)) %></small></h2>
+    <h2><%= image_tag @podcast.image.thumb('45x45#').url if @podcast.image_uid %><%= @podcast.name %> <small><%= t('.title', stream: @podcast.stream.name, day_of_week: t('date.day_names')[@podcast.day_of_week], time: l(@podcast.start_at, format: :time_only)) %></small></h2>
     <div class="buttons">
       <%= link_to(t('.edit_button'), edit_podcast_path(@podcast), class: 'button tiny') %>
     </div>

@@ -100,4 +100,13 @@ describe Episode do
     generated_filename = "#{episode.podcast.save_name}-#{episode.scheduled_at.strftime('%Y-%m-%d')}.mp3"
     episode.filename.should == generated_filename
   end
+
+  describe "#duration" do
+    it "formats the time in H:M:S" do
+      start_time = 16.hours.ago
+      end_time = start_time + 5.hours + 16.minutes + 11.seconds
+      podcast = FactoryGirl.build(:episode, scheduled_at: start_time, finished_at: end_time)
+      podcast.duration.should == '05:16:11'
+    end
+  end
 end

@@ -1,4 +1,4 @@
-<%= simple_form_for @podcast  do |f| %>
+<%= simple_form_for @podcast, html: { multipart: true }  do |f| %>
   <div class="row">
     <div class="large-5 columns">
       <%= f.input :name, class: '' %>
@@ -11,6 +11,9 @@
           <%= link_to(t('.new_stream'), new_stream_path, class: 'button tiny') %>
         </div>
       </div>
+
+      <%= f.input :image, as: :file %>
+
       <h5><%= t('.time_settings') %></h5>
       <%= f.input :day_of_week, collection: t('date.day_names').each_with_index.map {|x,i| [x, i] } %>
       <%= f.input :start_at %>

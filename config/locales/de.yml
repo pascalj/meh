@@ -36,6 +36,7 @@ de:
         day_of_week: 'Wochentag'
         length: 'Dauer in Minuten'
         start_at: 'Beginn'
+        image: 'Coverbild'
   date:
     abbr_day_names:
     - So

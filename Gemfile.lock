@@ -49,6 +49,9 @@ GEM
     daemons (1.1.9)
     database_cleaner (1.1.1)
     diff-lcs (1.2.4)
+    dragonfly (0.9.14)
+      multi_json (~> 1.0)
+      rack
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.1)
@@ -89,6 +92,8 @@ GEM
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
+    rack-cache (1.2)
+      rack (>= 0.4)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.0)
@@ -195,6 +200,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   database_cleaner
+  dragonfly
   factory_girl_rails
   friendly_id!
   jbuilder (~> 1.2)
@@ -202,6 +208,7 @@ DEPENDENCIES
   librarian
   mysql2
   quiet_assets
+  rack-cache
   rails (= 4.0.0)
   rails_config
   rspec-rails
