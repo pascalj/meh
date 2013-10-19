@@ -15,7 +15,7 @@ xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.
         xml.description t('.feed.description',
           name: @podcast.name,
           date: l(episode.scheduled_at.to_date),
-          time: episode.scheduled_at.strftime('%H:%m'),
+          time: episode.scheduled_at.strftime('%H:%M'),
           duration: episode.podcast.length,
           stream: episode.podcast.stream.name
         )
