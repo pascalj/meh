@@ -31,6 +31,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :production do
+  gem 'unicorn'
+end
+
 group :development do
   gem 'librarian'
   gem 'vagrant'
