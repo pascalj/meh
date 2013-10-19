@@ -24,6 +24,7 @@ de:
       title: '%{stream}, %{day_of_week} um %{time}'
       latest: 'neueste'
       edit_button: 'bearbeiten'
+      subscribe: 'Abonnieren'
       feed:
         title: '%{name} vom %{date}'
         description: '%{name} vom %{date}. Aufgenommen um %{time} von %{stream}.'

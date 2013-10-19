@@ -1,15 +1,24 @@
 <div class="row center podcast">
   <div class="large-12 columns">
-    <h2><%= image_tag @podcast.image.thumb('45x45#').url if @podcast.image_uid %><%= @podcast.name %> <small><%= t('.title', stream: @podcast.stream.name, day_of_week: t('date.day_names')[@podcast.day_of_week], time: l(@podcast.start_at, format: :time_only)) %></small></h2>
+    <h2><%= image_tag @podcast.image.thumb('45x45#').url if @podcast.image_uid %><%= @podcast.name %></h2>
+    <h5 class="subheader"><%= t('.title', stream: @podcast.stream.name, day_of_week: t('date.day_names')[@podcast.day_of_week], time: l(@podcast.start_at, format: :time_only)) %>
+      </small>
+    </h5>
     <div class="buttons">
-      <%= link_to(t('.edit_button'), edit_podcast_path(@podcast), class: 'button tiny') %>
+      <%= link_to(t('.edit_button'), edit_podcast_path(@podcast), class: 'button tiny hide-for-small') %>
     </div>
 
     <div class="row">
-      <div class="large-1 columns">
+      <div class="large-1 columns hide-for-small">
         Feed:
       </div>
-      <input class="feed-url large-11 columns" value="<%= podcast_url(@podcast, format: :rss) %>" />
+      <div class="large-11 columns hide-for-small">
+        <input class="feed-url" value="<%= podcast_url(@podcast, format: :rss) %>" />
+      </div>
+
+      <div class="show-for-small small-12 columns">
+         <%= link_to(t('.subscribe'), podcast_url(@podcast, format: :rss, protocol: :podcast), class: 'button small subscribe') %>
+      </div>
     </div>
     
     <% @episodes.each_with_index do |episode, index| %>
