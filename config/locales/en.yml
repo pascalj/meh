@@ -39,4 +39,4 @@ en:
         image: 'Cover Image'
   time:
     formats:
-      time_only: ! '%I.%m %p'
+      time_only: ! '%I.%M %p'
