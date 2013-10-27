@@ -32,7 +32,7 @@
               <%= podcast.stream.name %>
             </td>
             <td>
-              <%= t('.record_at_details', day_of_week: Date::DAYNAMES[podcast.day_of_week], time: l(podcast.start_at, format: '%H:%M'), duration: podcast.length) %>
+              <%= t('.record_at_details', day_of_week: t('date.day_names')[podcast.day_of_week], time: l(podcast.start_at, format: :time_only), duration: podcast.length) %>
             </td>
           </tr>
         <% end %>

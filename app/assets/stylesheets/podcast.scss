@@ -8,6 +8,20 @@ body.scope-podcasts {
     }
   }
 
+  .podcast {
+    h2 {
+      margin-bottom: 0;
+      img {
+        margin-right: 0.3em;
+        vertical-align: top;
+      }
+    }
+
+    .subscribe {
+      margin-top: 0.1em;
+    }
+  }
+
   .audiojs {
     height: 40px;
     position: relative;
@@ -103,9 +117,10 @@ body.scope-podcasts {
 
   input.feed-url {
     border: none;
-    min-width: 400px;
     font-size: 14px;
     margin: 0;
+    padding: 0;
+    width: 100%;
     &:focus {
       outline-width: 0;
     }

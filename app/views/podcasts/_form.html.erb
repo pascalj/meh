@@ -1,22 +1,22 @@
-<%= simple_form_for @podcast  do |f| %>
+<%= simple_form_for @podcast, html: { multipart: true }  do |f| %>
   <div class="row">
-    <div class="large-8 columns">
+    <div class="large-5 columns">
       <%= f.input :name, class: '' %>
-    </div>
-    <div class="large-4 columns">
-      <%= f.input :stream_id, collection: Stream.all %>
-      <%= link_to('New Stream', new_stream_path, class: 'button small') %>
-    </div>
-  </div>
-  <h5>Time settings</h5>
-  <div class="row">
-    <div class="large-4 columns">
-      <%= f.input :day_of_week, collection: Date::DAYNAMES.each_with_index.map {|x,i| [x, i] } %>
-    </div>
-    <div class="large-4 columns">
+      <div class="row">
+        <div class="large-8 small-8 columns">
+          <%= f.input :stream_id, collection: Stream.all %>
+        </div>
+        <div class="large-4 small-4 columns">
+          <br>
+          <%= link_to(t('.new_stream'), new_stream_path, class: 'button tiny') %>
+        </div>
+      </div>
+
+      <%= f.input :image, as: :file %>
+
+      <h5><%= t('.time_settings') %></h5>
+      <%= f.input :day_of_week, collection: t('date.day_names').each_with_index.map {|x,i| [x, i] } %>
       <%= f.input :start_at %>
-    </div>
-    <div class="large-4 columns">
       <%= f.input :length %>
     </div>
   </div>

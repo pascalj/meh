@@ -4,6 +4,8 @@ class Podcast < ActiveRecord::Base
   belongs_to :stream
   has_many :episodes
 
+  image_accessor :image
+
   friendly_id :name, use: :slugged
 
   validates_presence_of :name, :stream

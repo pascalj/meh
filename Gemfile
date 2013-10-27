@@ -31,6 +31,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :production do
+  gem 'unicorn'
+end
+
 group :development do
   gem 'librarian'
   gem 'vagrant'
@@ -48,6 +52,8 @@ gem 'sidekiq-status'
 gem 'friendly_id', git: 'https://github.com/norman/friendly_id.git'
 gem 'rails_config'
 gem 'database_cleaner'
+gem 'rack-cache', :require => 'rack/cache'
+gem 'dragonfly'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

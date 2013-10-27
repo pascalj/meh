@@ -50,4 +50,10 @@ class Episode < ActiveRecord::Base
       nil
     end
   end
+
+  def duration
+    seconds = self.finished_at - self.scheduled_at
+    seconds = 0 if seconds < 0
+    Time.at(seconds).utc.strftime('%H:%M:%S')
+  end
 end

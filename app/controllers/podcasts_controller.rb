@@ -45,6 +45,6 @@ class PodcastsController < ApplicationController
   private
 
   def podcast_params
-    params.require(:podcast).permit(:name, :length, :stream, :stream_id, :start_at, :day_of_week)
+    params.require(:podcast).permit(:name, :length, :stream, :stream_id, :start_at, :day_of_week, :image)
   end
 end

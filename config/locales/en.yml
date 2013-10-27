@@ -1,5 +1,4 @@
 en:
-  hello: "Hello world"
   streams:
     new:
       title: New stream
@@ -24,7 +23,20 @@ en:
       delete: 'Delete %{name}'
     show:
       title: '%{stream}, %{day_of_week} at %{time}'
+      latest: latest
+      edit_button: 'Edit podcast'
+      .subscribe: 'Subscribe'
+      feed:
+        title: '%{name} from %{date}'
+        description: '%{name} from %{date}. Recorded at %{time} on %{stream}.'
+    form:
+      time_settings: 'Time settings'
+      new_stream: 'New stream'
   simple_form:
     labels:
       podcast:
         length: 'Duration (minutes)'
+        image: 'Cover Image'
+  time:
+    formats:
+      time_only: ! '%I.%m %p'

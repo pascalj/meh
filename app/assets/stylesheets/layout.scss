@@ -2,7 +2,6 @@ $darkblue: #1E7BA0;
 .center {
   max-width: 1040px;
   margin: 0 auto;
-  padding: 0 20px;
 }
 
 header {
@@ -14,29 +13,38 @@ header {
 
   h1 {
     float: left;
-    padding: 0.2em 0;
     margin: 0;
   }
 
   h1 a {
-    background: transparent url(record_sign.png) no-repeat left top;
-    padding-left: 70px;
+    background: transparent url(image_path('record_sign.png')) no-repeat 0.1em center;
+    padding: 0.25em 0.2em 0.25em 1.8em;
+    float: left;
   }
 
   .new-podcast-button {
-    height: 100%;
     width: 50px;
     color: #fff;
-    font-size: 2.75em;
+    font-size: 2.125em;
     float: right;
     display: block;
-    line-height: 1.4;
-    padding: 0.2em 0;
+    line-height: 1.2125em;
+    padding: 0.25em 0;
     text-align: center;
-    &:hover {
-      background-color: lighten($darkblue, 10%);
-    }
   }
+
+  a:hover {
+    background-color: lighten($darkblue, 10%);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  header {
+    .new-podcast-button {
+      font-size: 2.75em;
+      line-height: 1.4;
+    }
+  }  
 }
 
 table {
@@ -77,6 +85,10 @@ div.buttons {
 
 .button.alert {
   color: #fff;
+}
+
+.alert-box.alert {
+  border-radius: 2px;
 }
 
 dl {
