@@ -22,7 +22,7 @@ function ready() {
   var as = audiojs.createAll({
     css: false,
     settings: { preload: false },
-    swfLocation: '/assets/audiojs.swf',
+    swfLocation: '/audiojs.swf',
     createPlayer: {
       markup: '\
         <div class="play-pause"> \
