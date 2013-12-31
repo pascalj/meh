@@ -7,6 +7,7 @@ script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
   - bundle exec rake spec
+before_install: gem update --remote bundler
 before_script:
   - cp config/database.travis.yml config/database.yml
   - mysql -e 'create database meh_test'
