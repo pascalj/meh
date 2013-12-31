@@ -27,3 +27,6 @@ config/environments/*.local.yml
 public/system/
 
 .DS_Store
+
+*.rdb
+fabfile.*
