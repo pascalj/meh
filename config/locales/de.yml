@@ -25,6 +25,7 @@ de:
       latest: 'neueste'
       edit_button: 'bearbeiten'
       subscribe: 'Abonnieren'
+      ago: 'Vor %{time}'
       feed:
         title: '%{name} vom %{date}'
         description: '%{name} vom %{date}. Aufgenommen um %{time} von %{stream}.'

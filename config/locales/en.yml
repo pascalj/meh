@@ -25,7 +25,8 @@ en:
       title: '%{stream}, %{day_of_week} at %{time}'
       latest: latest
       edit_button: 'Edit podcast'
-      .subscribe: 'Subscribe'
+      subscribe: 'Subscribe'
+      ago: '%{time} ago'
       feed:
         title: '%{name} from %{date}'
         description: '%{name} from %{date}. Recorded at %{time} on %{stream}.'

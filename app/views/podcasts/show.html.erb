@@ -1,35 +1,24 @@
 <div class="row center podcast">
   <div class="large-12 columns">
     <h2><%= image_tag @podcast.image.thumb('45x45#').url if @podcast.image_uid %><%= @podcast.name %></h2>
-    <h5 class="subheader"><%= t('.title', stream: @podcast.stream.name, day_of_week: t('date.day_names')[@podcast.day_of_week], time: l(@podcast.start_at, format: :time_only)) %>
-      </small>
+    <h5 class="subheader">
+      <%= t('.title', stream: @podcast.stream.name, day_of_week: t('date.day_names')[@podcast.day_of_week], time: l(@podcast.start_at, format: :time_only)) %>,
+        Feed:
+        <%= podcast_url(@podcast, format: :rss) %>
     </h5>
     <div class="buttons">
       <%= link_to(t('.edit_button'), edit_podcast_path(@podcast), class: 'button tiny hide-for-small') %>
     </div>
 
-    <div class="row">
-      <div class="large-1 columns hide-for-small">
-        Feed:
-      </div>
-      <div class="large-11 columns hide-for-small">
-        <input class="feed-url" value="<%= podcast_url(@podcast, format: :rss) %>" />
-      </div>
-
-      <div class="show-for-small small-12 columns">
-         <%= link_to(t('.subscribe'), podcast_url(@podcast, format: :rss, protocol: :podcast), class: 'button small subscribe') %>
-      </div>
-    </div>
-
     <% @episodes.each_with_index do |episode, index| %>
-      <div class="episode">
-        <% if index == 0 %>
-          <h4><%= l(episode.scheduled_at.to_date) %> <small><%= t('.latest') %></small></h4>
-        <% else %>
-          <h4><%= l(episode.scheduled_at.to_date) %></h4>
-        <% end %>
+      <div class="episode <%= 'first' if index == 0%>">
+        <h4 title="<%= l(episode.scheduled_at.to_date) %>"><%= t('.ago', time: time_ago_in_words(episode.scheduled_at.to_date)) %></h4>
         <audio src="<%= episode_file_url(episode) %>" preload="none"/>
       </div>
+
+      <% if index == 0 %>
+        <hr>
+      <% end %>
     <% end %>
     <%= paginate @episodes %>
   </div>
