@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '~> 4'
 
 gem 'mysql2'
 
@@ -54,6 +54,7 @@ gem 'rails_config'
 gem 'database_cleaner'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly'
+gem 'kaminari'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -20,7 +20,7 @@
          <%= link_to(t('.subscribe'), podcast_url(@podcast, format: :rss, protocol: :podcast), class: 'button small subscribe') %>
       </div>
     </div>
-    
+
     <% @episodes.each_with_index do |episode, index| %>
       <div class="episode">
         <% if index == 0 %>
@@ -31,5 +31,6 @@
         <audio src="<%= episode_file_url(episode) %>" preload="none"/>
       </div>
     <% end %>
+    <%= paginate @episodes %>
   </div>
 </div>
