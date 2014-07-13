@@ -1,4 +1,4 @@
-xml.instruct! :xml, version: "1.0" 
+xml.instruct! :xml, version: "1.0"
 xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd" do
   xml.channel do
     xml.title @podcast.name
@@ -7,7 +7,7 @@ xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.
     xml.tag!('itunes:description', '')
     xml.link podcast_url(@podcast)
     xml.tag!('itunes:author', @podcast.stream.name)
-    xml.tag!('itunes:image', image_url(@podcast.image.thumb('500x500#').url)) if @podcast.image_uid
+    xml.tag!('itunes:image', href: image_url(@podcast.image.thumb('500x500#').url)) if @podcast.image_uid
 
     for episode in @episodes
       xml.item do
