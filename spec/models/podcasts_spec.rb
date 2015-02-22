@@ -6,25 +6,25 @@ describe Podcast do
 
   it "requires a name" do
     podcast = Podcast.new
-    podcast.valid?.should == false
+    expect(podcast).to be_invalid
   end
 
   it "requires a length > 0" do
     podcast = Podcast.new(name: 'my name')
-    podcast.should be_invalid
-    podcast.errors[:length].should_not be_empty
+    expect(podcast).to be_invalid
+    expect(podcast.errors[:length]).to_not be_empty
   end
 
   it "must have a stream" do
     podcast = Podcast.new(name: 'my name', length: 15)
-    podcast.should be_invalid
-    podcast.errors[:stream].should_not be_empty
+    expect(podcast).to be_invalid
+    expect(podcast.errors[:stream]).to_not be_empty
   end
 
   describe "#schedule_recording" do
 
     before :each do
-      RecordWorker.stub(:perform_at) { "JOB_ID" }
+      allow(RecordWorker).to receive(:perform_at).and_return("JOB_ID")
     end
 
     it "adds episodes to record" do
@@ -44,7 +44,7 @@ describe Podcast do
 
     it "schedules the recording at scheduled_at" do
       podcast = FactoryGirl.create(:podcast, :tomorrow)
-      RecordWorker.should_receive(:perform_at)
+      expect(RecordWorker).to receive(:perform_at)
       Podcast.schedule_recording
     end
   end
@@ -57,7 +57,7 @@ describe Podcast do
     end
 
     it "finds podcasts which should be recorded next" do
-      Podcast.record_next.count.should == @today.length + @tomorrow.length
+      expect(Podcast.record_next.count).to eq(@today.length + @tomorrow.length)
     end
   end
 
@@ -65,7 +65,7 @@ describe Podcast do
 
     it "strips all but A-Za-z" do
       podcast = FactoryGirl.build(:podcast, name: 'MÖÄÜy42##2!$%&/1P0odcast66')
-      podcast.save_name.should == 'mypodcast'
+      expect(podcast.save_name).to eq('mypodcast')
     end
   end
 end

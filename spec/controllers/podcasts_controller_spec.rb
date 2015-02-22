@@ -7,12 +7,12 @@ describe PodcastsController do
     it "assigns all current podcasts" do
       podcast = FactoryGirl.create(:podcast)
       get :index
-      assigns(:podcasts).should eq([podcast])
+      expect(assigns(:podcasts)).to eq([podcast])
     end
 
     it "renders the index template" do
       get :index
-      response.should render_template(:index)
+      expect(response).to render_template(:index)
     end
   end
 
@@ -20,13 +20,13 @@ describe PodcastsController do
     it "finds the correct podcast" do
       podcast = FactoryGirl.create(:podcast)
       get :show, id: podcast.id
-      assigns(:podcast).should eq(podcast)
+      expect(assigns(:podcast)).to eq(podcast)
     end
 
     it "renders the show template" do
       podcast = FactoryGirl.create(:podcast)
       get :show, id: podcast.id
-      response.should render_template(:show)
+      expect(response).to render_template(:show)
     end
   end
 
@@ -34,12 +34,12 @@ describe PodcastsController do
 
     it "assigns a new podcast" do
       get :new
-      assigns(:podcast).should_not be_nil
+      expect(assigns(:podcast)).to_not be_nil
     end
 
     it "renders the new template" do
       get :new
-      response.should render_template(:new)
+      expect(response).to render_template(:new)
     end
   end
 
@@ -51,21 +51,21 @@ describe PodcastsController do
         }.to change(Podcast, :count).by(1)
       end
 
-      it "should redirect to the show action" do
+      it "redirects to the show action" do
         post :create, podcast: FactoryGirl.build(:podcast).attributes
-        response.should redirect_to(Podcast.last)
+        expect(response).to redirect_to(Podcast.last)
       end
 
       it "sets the starttime" do
         podcast = FactoryGirl.build(:podcast)
         post :create, podcast: podcast.attributes
-        podcast.start_at.hour.should == assigns(:podcast).start_at.hour
+        expect(podcast.start_at.hour).to eq(assigns(:podcast).start_at.hour)
       end
 
       it "sets the day_of_week" do
         podcast = FactoryGirl.build(:podcast)
         post :create, podcast: podcast.attributes
-        podcast.day_of_week.should == assigns(:podcast).day_of_week
+        expect(podcast.day_of_week).to eq(assigns(:podcast).day_of_week)
       end
     end
 
@@ -78,7 +78,7 @@ describe PodcastsController do
 
       it "renders the new view again" do
         post :create, podcast: FactoryGirl.build(:podcast, :invalid).attributes
-        response.should render_template(:new)
+        expect(response).to render_template(:new)
       end
     end
   end
@@ -93,32 +93,32 @@ describe PodcastsController do
     context "with valid data" do
       it "finds the correct podcast" do
         put :update, id: @podcast.id, podcast: @podcast.attributes
-        assigns(:podcast).should eq(@podcast)
+        expect(assigns(:podcast)).to eq(@podcast)
       end
 
       it "redirects to the show action" do
         put :update, id: @podcast.id, podcast: @podcast.attributes
-        response.should redirect_to(@podcast)
+        expect(response).to redirect_to(@podcast)
       end
 
       it "changes the podcast" do
         attributes = @podcast.attributes
         attributes["name"] = 'My new name'
         put :update, id: @podcast.id, podcast: attributes
-        Podcast.find(@podcast.id).name.should == 'My new name'
+        expect(Podcast.find(@podcast.id).name).to eq('My new name')
       end
     end
 
     context "with invalid data" do
       it "renders the edit view" do
         put :update, id: @podcast.id, podcast: @invalid_podcast.attributes
-        response.should render_template(:edit)
+        expect(response).to render_template(:edit)
       end
 
       it "does not update the podcast" do
         put :update, id: @podcast.id, podcast: @invalid_podcast.attributes
         @podcast.reload
-        @podcast.name.should_not be(@invalid_podcast.name)
+        expect(@podcast.name).to_not be(@invalid_podcast.name)
       end
     end
   end
@@ -134,9 +134,9 @@ describe PodcastsController do
       }.to change(Podcast, :count).by(-1)
     end
 
-    it "should redirect to #index" do
+    it "redirects to #index" do
       delete :destroy, id: @podcast.id
-      response.should redirect_to(action: :index)
+      expect(response).to redirect_to(action: :index)
     end
   end
 
@@ -146,7 +146,7 @@ describe PodcastsController do
       get :show, id: @podcast.id, format: :rss
     end
     it "responds with XML" do
-      response.should have_content_type('application/rss+xml')
+      expect(response).to have_content_type('application/rss+xml')
     end
   end
 end

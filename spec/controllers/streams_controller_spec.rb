@@ -7,12 +7,12 @@ describe StreamsController do
     it "assigns all current streams" do
       stream = FactoryGirl.create(:stream)
       get :index
-      assigns(:streams).should eq([stream])
+      expect(assigns(:streams)).to eq([stream])
     end
 
     it "renders the index template" do
       get :index
-      response.should render_template(:index)
+      expect(response).to render_template(:index)
     end
   end
 
@@ -20,7 +20,7 @@ describe StreamsController do
     it "redirects to Podcast#index" do
       stream = FactoryGirl.create(:stream)
       get :show, id: stream.id
-      response.should redirect_to(podcasts_path)
+      expect(response).to redirect_to(podcasts_path)
     end
   end
 
@@ -28,12 +28,12 @@ describe StreamsController do
 
     it "assigns a new stream" do
       get :new
-      assigns(:stream).should_not be_nil
+      expect(assigns(:stream)).to_not be_nil
     end
 
     it "renders the new template" do
       get :new
-      response.should render_template(:new)
+      expect(response).to render_template(:new)
     end
   end
 
@@ -47,7 +47,7 @@ describe StreamsController do
 
       it "should redirect to the show action" do
         post :create, stream: FactoryGirl.build(:stream).attributes
-        response.should redirect_to(Stream.last)
+        expect(response).to redirect_to(Stream.last)
       end
     end
 
@@ -60,7 +60,7 @@ describe StreamsController do
 
       it "renders the new view again" do
         post :create, stream: FactoryGirl.build(:stream, :invalid).attributes
-        response.should render_template(:new)
+        expect(response).to render_template(:new)
       end
     end
   end
@@ -75,32 +75,32 @@ describe StreamsController do
     context "with valid data" do
       it "finds the correct stream" do
         put :update, id: @stream.id, stream: @stream.attributes
-        assigns(:stream).should eq(@stream)
+        expect(assigns(:stream)).to eq(@stream)
       end
 
       it "redirects to the show action" do
         put :update, id: @stream.id, stream: @stream.attributes
-        response.should redirect_to(@stream)
+        expect(response).to redirect_to(@stream)
       end
 
       it "changes the stream" do
         attributes = @stream.attributes
         attributes["name"] = 'My new name'
         put :update, id: @stream.id, stream: attributes
-        Stream.find(@stream.id).name.should == 'My new name'
+        expect(Stream.find(@stream.id).name).to eq('My new name')
       end
     end
 
     context "with invalid data" do
       it "renders the edit view" do
         put :update, id: @stream.id, stream: @invalid_stream.attributes
-        response.should render_template(:edit)
+        expect(response).to render_template(:edit)
       end
 
       it "does not update the stream" do
         put :update, id: @stream.id, stream: @invalid_stream.attributes
         @stream.reload
-        @stream.name.should_not be(@invalid_stream.name)
+        expect(@stream.name).to_not be(@invalid_stream.name)
       end
     end
   end

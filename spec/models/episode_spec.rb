@@ -3,24 +3,24 @@ require 'spec_helper'
 describe Episode do
 
   it "requires a stream" do
-    Episode.new.should_not be_valid
+    expect(Episode.new).to_not be_valid
   end
 
   it "is valid with a stream" do
-    FactoryGirl.build(:episode, :scheduled).should be_valid
+    expect(FactoryGirl.build(:episode, :scheduled)).to be_valid
   end
 
   describe "scope scheduled" do
 
     it "finds episodes that are scheduled" do
       @scheduled = FactoryGirl.create_list(:episode, 4, :scheduled)
-      Episode.scheduled.should =~ @scheduled
+      expect(Episode.scheduled).to eq(@scheduled)
     end
 
     it "ignores episodes that were scheduled in the past" do
       @scheduled = FactoryGirl.create_list(:episode, 4, :scheduled)
       @scheduled_yesterday = FactoryGirl.create_list(:episode, 5, :scheduled_yesterday)
-      Episode.scheduled.count.should == @scheduled.length
+      expect(Episode.scheduled.count).to eq(@scheduled.length)
     end
   end
 
@@ -29,8 +29,8 @@ describe Episode do
     context "not scheduled" do
 
       before :each do
-        RecordWorker.stub(:perform_at) { "JOB_ID" }
-        Sidekiq::Status.stub(:queued?).and_return(false)
+        expect(RecordWorker).to receive(:perform_at).and_return("JOB_ID")
+        allow(Sidekiq::Status).to receive(:queued?).and_return(false)
       end
 
       it "saved the record" do
@@ -44,41 +44,41 @@ describe Episode do
         podcast = FactoryGirl.create(:podcast)
         episode = Episode.new(podcast: podcast)
         episode.schedule
-        episode.scheduled_at.wday.should == podcast.day_of_week
+        expect(episode.scheduled_at.wday).to eq(podcast.day_of_week)
       end
 
       it "sets the time correctly" do
         podcast = FactoryGirl.create(:podcast)
         episode = Episode.new(podcast: podcast)
         episode.schedule
-        episode.scheduled_at.hour.should == podcast.start_at.hour
-        episode.scheduled_at.min.should == podcast.start_at.min
+        expect(episode.scheduled_at.hour).to eq(podcast.start_at.hour)
+        expect(episode.scheduled_at.min).to eq(podcast.start_at.min)
       end
 
       it "sets scheduled_at to future dates" do
         podcast = FactoryGirl.create(:podcast)
         episode = Episode.new(podcast: podcast)
         episode.schedule
-        (episode.scheduled_at > Time.zone.now).should == true
+        expect(episode.scheduled_at > Time.zone.now).to eq(true)
       end
 
       it "saves the job_id" do
         podcast = FactoryGirl.create(:podcast)
         episode = Episode.new(podcast: podcast)
         episode.schedule
-        episode.job_id.should == "JOB_ID"
+        expect(episode.job_id).to eq("JOB_ID")
       end
     end
 
     context "already scheduled" do
 
       it "does not schedule again if a job is already scheduled" do
-        Sidekiq::Status.should_receive(:queued?).and_return(true)
+        expect(Sidekiq::Status).to receive(:queued?).and_return(true)
 
         podcast = FactoryGirl.create(:podcast)
         episode = Episode.new(podcast: podcast)
         episode.schedule
-        RecordWorker.should_not receive(:perform_at)
+        expect(RecordWorker).to_not receive(:perform_at)
       end
     end
   end
@@ -86,7 +86,7 @@ describe Episode do
   describe "#schedule_for_podcasts" do
 
     it "creates episodes for each podcast" do
-      RecordWorker.stub(:perform_at) { "JOB_ID" }
+      allow(RecordWorker).to receive(:perform_at).and_return("JOB_ID")
       podcasts = FactoryGirl.create_list(:podcast, 5, :today)
 
       expect{
@@ -96,9 +96,11 @@ describe Episode do
   end
 
   describe "#filename" do
-    episode = FactoryGirl.create(:episode, :scheduled)
-    generated_filename = "#{episode.podcast.save_name}-#{episode.scheduled_at.strftime('%Y-%m-%d')}.mp3"
-    episode.filename.should == generated_filename
+    it 'generates a filename' do
+      episode = FactoryGirl.create(:episode, :scheduled)
+      generated_filename = "#{episode.podcast.save_name}-#{episode.scheduled_at.strftime('%Y-%m-%d')}.mp3"
+      expect(episode.filename).to eq(generated_filename)
+    end
   end
 
   describe "#duration" do
@@ -106,7 +108,7 @@ describe Episode do
       start_time = 16.hours.ago
       end_time = start_time + 5.hours + 16.minutes + 11.seconds
       podcast = FactoryGirl.build(:episode, scheduled_at: start_time, finished_at: end_time)
-      podcast.duration.should == '05:16:11'
+      expect(podcast.duration).to eq('05:16:11')
     end
   end
 end
