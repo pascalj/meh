@@ -23,6 +23,7 @@ xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.
         xml.link podcast_episode_url(@podcast, episode)
         xml.guid podcast_episode_url(@podcast, episode)
         xml.tag!('itunes:image', image_url(@podcast.image.thumb('500x500#').url)) if @podcast.image_uid
+        xml.tag!('media:thumbnail', url: image_url(@podcast.image.thumb('500x500#').url)) if @podcast.image_uid
         xml.tag!('itunes:duration', episode.duration)
         xml.enclosure url: episode_file_url(episode), length: File.size(episode.path_and_filename), type: 'audio/mpeg'
       end
