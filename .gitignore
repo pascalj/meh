@@ -30,3 +30,6 @@ public/system/
 
 *.rdb
 fabfile.*
+/config/deploy*
+Capfile
+.capistrano
