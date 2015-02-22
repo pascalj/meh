@@ -93,7 +93,7 @@ GEM
     kaminari (0.16.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    kgio (2.8.0)
+    kgio (2.9.3)
     librarian (0.1.0)
       highline
       thor (~> 0.15)
